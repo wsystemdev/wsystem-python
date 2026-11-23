@@ -2,8 +2,10 @@
 
 Python client for the [W System](https://wsystem.dev) API: EU VAT (VIES) and EORI validation, company registers, sanctions screening, KYB and EU e-invoicing (EN 16931, XRechnung, ZUGFeRD / Factur-X PDF, credit notes, Peppol, inbox, KSeF). No dependencies, Python 3.9+, typed (`py.typed`).
 
+The PyPI package is coming soon. Until then install from GitHub:
+
 ```bash
-pip install wsystem
+pip install "git+https://github.com/wsystemdev/wsystem-python.git"
 ```
 
 ```python
