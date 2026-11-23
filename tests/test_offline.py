@@ -151,3 +151,11 @@ def test_text_responses_and_raw_request():
     ws, f = client((200, {"content-type": "application/xml"}, b"<Invoice/>"))
     assert ws.einvoice_sample() == "<Invoice/>"
     assert ws.request("get", "/health") == "<Invoice/>"
+
+
+def test_current_api_error_shape_error_message_docs():
+    ws, _ = client(j(400, {"error": "missing_input", "message": "needs input", "docs": "https://api.wsystem.dev/docs"}), max_retries=0)
+    with pytest.raises(wsystem.BadRequestError) as e:
+        ws.validate_einvoice({})
+    assert e.value.code == "missing_input" and "needs input" in str(e.value) and e.value.docs_url == "https://api.wsystem.dev/docs"
+    assert e.value.request_id is None  # the API does not send X-Request-Id yet; surfaced automatically once it does

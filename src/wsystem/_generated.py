@@ -1,4 +1,4 @@
-# Generated from the W System OpenAPI 0.3.128 by growth/sdk/gen.py. Do not edit by hand.
+# Generated from the W System OpenAPI 0.3.130 by growth/sdk/gen.py. Do not edit by hand.
 from __future__ import annotations
 from typing import Any, Optional
 from ._http import RequestOptions, _seg
@@ -65,7 +65,7 @@ OPERATIONS = [
 
 
 class _Operations:
-    """All 57 operations of the W System API (spec 0.3.128)."""
+    """All 57 operations of the W System API (spec 0.3.130)."""
 
     def _request(self, method: str, path: str, *, query: Any = None, body: Any = None, options: Optional[RequestOptions] = None) -> Any:  # pragma: no cover
         raise NotImplementedError

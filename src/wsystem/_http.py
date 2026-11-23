@@ -130,7 +130,7 @@ def send(client: "Any", method: str, path: str, query: Any, body: Any, options: 
         if status == 402:
             msg = "Free tier used up (HTTP 402). Get a free key (500 units/month) at https://api.wsystem.dev/account/free-key or a plan at https://wsystem.dev/pricing"
         else:
-            detail = (parsed.get("detail") or parsed.get("error") or parsed) if isinstance(parsed, dict) else parsed
+            detail = (parsed.get("detail") or parsed.get("message") or parsed.get("error") or parsed) if isinstance(parsed, dict) else parsed
             msg = f"W System API HTTP {status}: {detail if isinstance(detail, str) else json.dumps(detail)}"
         err = error_for(status)(msg, status, parsed, rh)
         if isinstance(err, RateLimitError):

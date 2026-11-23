@@ -28,7 +28,7 @@ class APIStatusError(WSystemError):
         detail = body.get("detail") if isinstance(body, dict) else None
         err = body.get("error") if isinstance(body, dict) else None
         self.code: Optional[str] = (detail.get("code") if isinstance(detail, dict) else None) or (err if isinstance(err, str) else None) or (body.get("code") if isinstance(body, dict) else None)
-        self.docs_url: Optional[str] = body.get("docs_url") if isinstance(body, dict) else None
+        self.docs_url: Optional[str] = (body.get("docs_url") or body.get("docs")) if isinstance(body, dict) else None
 
 
 class BadRequestError(APIStatusError):
